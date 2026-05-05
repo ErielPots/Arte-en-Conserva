@@ -13,6 +13,13 @@
     <span class="leaf">🍀</span><span class="leaf">🌿</span><span class="leaf">🍃</span>
   </div>
 
+  <!-- PROMO BAR -->
+  <div class="promo-bar">
+    <span>🏦 Banco Provincia</span>
+    <span class="promo-pct">40% OFF</span>
+    <span>con tu cuenta DNI</span>
+  </div>
+
   <header id="site-header">
     <nav>
       <a href="index.html" class="logo">
@@ -21,9 +28,10 @@
       <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
       <ul class="nav-links" id="nav-links">
         <li><a href="index.html">Inicio</a></li>
-        <li><a href="nosotros.html" class="active">Nosotros</a></li>
         <li><a href="productos.html">Productos</a></li>
+        <li><a href="nosotros.html" class="active">Nosotros</a></li>
         <li><a href="recetas.html">Recetas</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
         <li>
           <button class="cart-nav-btn" onclick="openCartDrawer()" aria-label="Carrito">
             🛒 <span class="cart-badge" style="display:none;">0</span>
@@ -36,56 +44,47 @@
     </nav>
   </header>
 
-  <!-- PAGE HERO con foto real del puesto -->
-  <div class="page-hero">
-    <div class="hero-bg" style="background-image: url('assets/img/puesto_feria.jpg'); position:absolute; inset:0; background-size:cover; background-position:center top;"></div>
-    <div class="page-hero-content">
-      <h1>Nuestra Historia</h1>
-      <p>Un emprendimiento nacido en Berisso con el corazón puesto en los sabores de la tierra.</p>
-    </div>
-  </div>
 
   <!-- STORY -->
-  <section class="section container">
+  <section class="section container" style="padding-top:2rem;">
     <div class="story-grid">
       <div class="story-text">
         <span class="section-label">Quiénes somos</span>
         <h2 class="section-title reveal">Un emprendimiento<br>con alma artesanal</h2>
 
-        <p class="reveal delay-1">En Arte en Conserva creemos que lo que comemos importa — su origen, su proceso, quién lo hizo y cómo. Por eso producimos de forma artesanal, con ingredientes locales, en pequeños lotes, sin atajos ni aditivos.</p>
+        <p class="reveal delay-1" style="font-size:0.95rem;">En Arte en Conserva creemos que lo que comemos importa — su origen, su proceso, quién lo hizo y cómo. Producimos de forma artesanal, con ingredientes locales, en pequeños lotes, sin atajos ni aditivos.</p>
 
-        <div style="margin-top:1.5rem; display:flex; flex-direction:column; gap:1.2rem;" class="reveal delay-2">
-          <div style="display:flex; gap:0.8rem; align-items:flex-start;">
-            <span style="font-size:1.2rem; flex-shrink:0;">🏺</span>
-            <div><strong>Producción artesanal en Berisso</strong><br><span style="color:var(--text-muted); font-size:0.95rem;">Elaboramos en pequeños lotes, controlando cada etapa del proceso de principio a fin.</span></div>
+        <div style="margin-top:1rem; display:flex; flex-direction:column; gap:0.7rem;" class="reveal delay-2">
+          <div style="display:flex; gap:0.7rem; align-items:flex-start;">
+            <span style="font-size:1rem; flex-shrink:0;">🏺</span>
+            <div><strong style="font-size:0.92rem;">Producción artesanal en Berisso</strong><br><span style="color:var(--text-muted); font-size:0.85rem;">Elaboramos en pequeños lotes, controlando cada etapa del proceso.</span></div>
           </div>
-          <div style="display:flex; gap:0.8rem; align-items:flex-start;">
-            <span style="font-size:1.2rem; flex-shrink:0;">📍</span>
-            <div><strong>Ingredientes locales y trazables</strong><br><span style="color:var(--text-muted); font-size:0.95rem;">Trabajamos con productores de la región para garantizar frescura y origen conocido.</span></div>
+          <div style="display:flex; gap:0.7rem; align-items:flex-start;">
+            <span style="font-size:1rem; flex-shrink:0;">📍</span>
+            <div><strong style="font-size:0.92rem;">Ingredientes locales y trazables</strong><br><span style="color:var(--text-muted); font-size:0.85rem;">Trabajamos con productores de la región para garantizar frescura y origen conocido.</span></div>
           </div>
-          <div style="display:flex; gap:0.8rem; align-items:flex-start;">
-            <span style="font-size:1.2rem; flex-shrink:0;">🌱</span>
-            <div><strong>Sin aditivos ni conservantes</strong><br><span style="color:var(--text-muted); font-size:0.95rem;">Cero agregados artificiales. Solo ingredientes que podés reconocer en la etiqueta.</span></div>
+          <div style="display:flex; gap:0.7rem; align-items:flex-start;">
+            <span style="font-size:1rem; flex-shrink:0;">🌱</span>
+            <div><strong style="font-size:0.92rem;">Sin aditivos ni conservantes</strong><br><span style="color:var(--text-muted); font-size:0.85rem;">Cero agregados artificiales. Solo ingredientes que podés reconocer en la etiqueta.</span></div>
           </div>
-          <div style="display:flex; gap:0.8rem; align-items:flex-start;">
-            <span style="font-size:1.2rem; flex-shrink:0;">💬</span>
-            <div><strong>Proceso transparente</strong><br><span style="color:var(--text-muted); font-size:0.95rem;">Mostramos cómo producimos porque no tenemos nada que ocultar y todo que compartir.</span></div>
+          <div style="display:flex; gap:0.7rem; align-items:flex-start;">
+            <span style="font-size:1rem; flex-shrink:0;">💬</span>
+            <div><strong style="font-size:0.92rem;">Proceso transparente</strong><br><span style="color:var(--text-muted); font-size:0.85rem;">Mostramos cómo producimos porque no tenemos nada que ocultar.</span></div>
           </div>
         </div>
 
-        <div style="margin-top:2rem;" class="reveal delay-4">
+        <div style="margin-top:1.2rem;" class="reveal">
           <a href="productos.html" class="btn btn-primary">Ver nuestros productos</a>
         </div>
       </div>
 
       <!-- Video en lugar de la foto -->
       <div class="feria-photo-wrapper reveal-right">
-        <div style="border-radius:var(--radius-lg); overflow:hidden; box-shadow:var(--shadow-lg);">
+        <div style="border-radius:var(--radius-lg); overflow:hidden; box-shadow:var(--shadow-lg); aspect-ratio:9/16; max-width:340px; margin:0 auto;">
           <video
             controls
             playsinline
-            poster="assets/img/puesto_feria.jpg"
-            style="width:100%; max-height:75vh; display:block; background:#000; object-fit:contain;"
+            style="width:100%; height:100%; display:block; background:#000; object-fit:cover;"
             preload="metadata">
             <source src="assets/video/nosotros.mp4" type="video/mp4">
             Tu navegador no soporta video HTML5.
@@ -99,11 +98,6 @@
     </div>
   </section>
 
-  <!-- QUOTE BANNER -->
-  <div class="quote-banner">
-    <p class="quote-text reveal">Producimos de forma artesanal, con ingredientes locales,<br>en pequeños lotes, sin atajos ni aditivos.</p>
-    <p class="quote-author reveal delay-2">Arte en Conserva — Berisso, Argentina</p>
-  </div>
 
   <!-- VALORES -->
   <section class="section container">
@@ -207,8 +201,8 @@
           <h4>Navegación</h4>
           <ul>
             <li><a href="index.html">Inicio</a></li>
-            <li><a href="nosotros.html">Nosotros</a></li>
             <li><a href="productos.html">Productos</a></li>
+            <li><a href="nosotros.html">Nosotros</a></li>
             <li><a href="recetas.html">Recetas</a></li>
           </ul>
         </div>
@@ -243,7 +237,7 @@
 
     const observer = new IntersectionObserver(entries => {
       entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
-    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    }, { threshold: 0.1, rootMargin: '0px 0px 0px 0px' });
     document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => observer.observe(el));
   </script>
 </body>

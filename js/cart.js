@@ -20,7 +20,8 @@ function addToCart(productId, qty = 1, variant = null) {
   if (!variant && product.variants) variant = product.variants[0];
 
   const cartId = variant ? `${productId}__${variant.label.replace(/\s/g, '')}` : productId;
-  const price  = variant ? variant.price : product.price;
+  const originalPrice = variant ? variant.price : product.price;
+  const price  = Math.round(originalPrice * 0.6);
   const name   = variant ? `${product.name} (${variant.label})` : product.name;
 
   const cart = getCart();
@@ -28,7 +29,7 @@ function addToCart(productId, qty = 1, variant = null) {
   if (existing) {
     existing.qty += qty;
   } else {
-    cart.push({ id: cartId, productId, name, price, icon: product.icon, qty });
+    cart.push({ id: cartId, productId, name, price, originalPrice, icon: product.icon, image: product.image || null, qty });
   }
   saveCart(cart);
   showCartToast(name);
@@ -131,10 +132,14 @@ function renderCartDrawer() {
 
   itemsEl.innerHTML = cart.map(item => `
     <div class="cart-item" id="cart-item-${item.id}">
-      <div class="cart-item-icon">${item.icon}</div>
+      <div class="cart-item-icon">${item.image ? `<img src="${item.image}" alt="${item.name}" style="width:100%;height:100%;object-fit:contain;border-radius:6px;">` : item.icon}</div>
       <div class="cart-item-info">
         <p class="cart-item-name">${item.name}</p>
-        <p class="cart-item-price">${formatPrice(item.price)}</p>
+        <div style="display:flex;align-items:center;gap:0.4rem;flex-wrap:wrap;">
+          ${item.originalPrice ? `<span style="font-size:0.75rem;color:var(--red);text-decoration:line-through;opacity:0.8;">${formatPrice(item.originalPrice)}</span>` : ''}
+          <span class="cart-item-price" style="color:var(--green-dark);font-weight:700;">${formatPrice(item.price)}</span>
+          <span style="background:var(--green-dark);color:#fff;font-size:0.62rem;font-weight:700;padding:0.05rem 0.35rem;border-radius:10px;">-40%</span>
+        </div>
       </div>
       <div class="cart-item-controls">
         <button class="qty-btn" onclick="updateQty('${item.id}', -1); return false;">−</button>

@@ -13,6 +13,13 @@
     <span class="leaf">🍀</span><span class="leaf">🌿</span><span class="leaf">🍃</span>
   </div>
 
+  <!-- PROMO BAR -->
+  <div class="promo-bar">
+    <span>🏦 Banco Provincia</span>
+    <span class="promo-pct">40% OFF</span>
+    <span>con tu cuenta DNI</span>
+  </div>
+
   <header id="site-header">
     <nav>
       <a href="index.html" class="logo">
@@ -21,9 +28,10 @@
       <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
       <ul class="nav-links" id="nav-links">
         <li><a href="index.html">Inicio</a></li>
-        <li><a href="nosotros.html">Nosotros</a></li>
         <li><a href="productos.html" class="active">Productos</a></li>
+        <li><a href="nosotros.html">Nosotros</a></li>
         <li><a href="recetas.html">Recetas</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
         <li>
           <button class="cart-nav-btn" onclick="openCartDrawer()" aria-label="Carrito">
             🛒 <span class="cart-badge" style="display:none;">0</span>
@@ -36,23 +44,9 @@
     </nav>
   </header>
 
-  <!-- PAGE HERO -->
-  <div class="page-hero">
-    <div class="page-hero-content">
-      <h1>Nuestros Productos</h1>
-      <p>Mermeladas y conservas artesanales. Hacé click en cada producto para ver más detalles.</p>
-    </div>
-  </div>
-
   <!-- PRODUCTS -->
   <section class="products-section container" id="productos">
-    <div style="text-align:center; margin-bottom:1.5rem;">
-      <span class="section-label">Lo que hacemos</span>
-      <h2 class="section-title centered reveal">Con fruta y con amor</h2>
-      <p class="section-lead centered reveal delay-1">Elegí tu categoría y conocé todos los sabores disponibles.</p>
-    </div>
-
-    <div class="category-tabs reveal delay-2" role="tablist">
+    <div class="category-tabs reveal" role="tablist">
       <button class="tab-btn active" id="tab-mermeladas" role="tab" aria-selected="true" aria-controls="pane-mermeladas" onclick="switchTab('mermeladas')">
         🍓 Mermeladas
       </button>
@@ -60,38 +54,16 @@
         🥒 Conservas
       </button>
     </div>
-
     <!-- MERMELADAS -->
     <div class="tab-pane active" id="pane-mermeladas" role="tabpanel">
-      <div style="background:var(--beige-dark); border-radius:var(--radius); padding:1.2rem 1.5rem; margin-bottom:2.5rem; display:flex; align-items:center; gap:1rem; flex-wrap:wrap;">
-        <span style="font-size:1.5rem;">🏺</span>
-        <div>
-          <strong style="color:var(--red);">Mermeladas Artesanales</strong>
-          <p style="font-size:0.88rem; margin:0;">Elaboradas solo con frutas de primera calidad, azúcar y limón. Sin conservantes, sin colorantes, sin aditivos.</p>
-        </div>
-      </div>
       <div class="products-grid" id="grid-mermeladas"></div>
     </div>
 
     <!-- CONSERVAS -->
     <div class="tab-pane" id="pane-conservas" role="tabpanel">
-      <div style="background:var(--beige-dark); border-radius:var(--radius); padding:1.2rem 1.5rem; margin-bottom:2.5rem; display:flex; align-items:center; gap:1rem; flex-wrap:wrap;">
-        <span style="font-size:1.5rem;">🥒</span>
-        <div>
-          <strong style="color:var(--green-dark);">Conservas Artesanales</strong>
-          <p style="font-size:0.88rem; margin:0;">Verduras y especias de estación preparadas con recetas tradicionales para acompañar tus comidas.</p>
-        </div>
-      </div>
       <div class="products-grid" id="grid-conservas"></div>
     </div>
   </section>
-
-  <div style="background:var(--green); padding:3rem 0; margin:2rem 0;">
-    <div class="container" style="text-align:center;">
-      <p style="font-family:var(--font-script); font-size:1.8rem; color:white; margin-bottom:0.5rem;">"Sin conservantes. Sin colorantes. Sin atajos."</p>
-      <p style="color:rgba(255,255,255,0.85); font-size:0.9rem; text-transform:uppercase; letter-spacing:2px;">Solo fruta · Azúcar · Limón</p>
-    </div>
-  </div>
 
   <footer>
     <div class="container">
@@ -114,8 +86,8 @@
           <h4>Navegación</h4>
           <ul>
             <li><a href="index.html">Inicio</a></li>
-            <li><a href="nosotros.html">Nosotros</a></li>
             <li><a href="productos.html">Productos</a></li>
+            <li><a href="nosotros.html">Nosotros</a></li>
             <li><a href="recetas.html">Recetas</a></li>
           </ul>
         </div>
@@ -147,8 +119,12 @@
             ${inner}
             ${product.badge ? `<span class="product-badge">${product.badge}</span>` : ''}
             <h3>${product.name}</h3>
+            <div class="product-card-prices">
+              <span class="price-original">${formatPrice(product.price)}</span>
+              <span class="price-discount">${formatPrice(Math.round(product.price * 0.6))}</span>
+            </div>
+            <button class="product-card-atc" onclick="addToCart('${product.id}'); event.stopPropagation();">+ Agregar</button>
           </a>
-          <button class="product-card-atc" onclick="addToCart('${product.id}'); event.stopPropagation();">+ Agregar</button>
         </div>`;
     }
 

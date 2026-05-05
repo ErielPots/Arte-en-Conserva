@@ -13,6 +13,13 @@
     <span class="leaf">🍀</span><span class="leaf">🌿</span><span class="leaf">🍃</span>
   </div>
 
+  <!-- PROMO BAR -->
+  <div class="promo-bar">
+    <span>🏦 Banco Provincia</span>
+    <span class="promo-pct">40% OFF</span>
+    <span>con tu cuenta DNI</span>
+  </div>
+
   <header id="site-header">
     <nav>
       <a href="index.html" class="logo">
@@ -21,9 +28,10 @@
       <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
       <ul class="nav-links" id="nav-links">
         <li><a href="index.html">Inicio</a></li>
-        <li><a href="nosotros.html">Nosotros</a></li>
         <li><a href="productos.html">Productos</a></li>
+        <li><a href="nosotros.html">Nosotros</a></li>
         <li><a href="recetas.html">Recetas</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
         <li>
           <button class="cart-nav-btn" onclick="openCartDrawer()" aria-label="Carrito">
             🛒 <span class="cart-badge" style="display:none;">0</span>
@@ -36,13 +44,6 @@
     </nav>
   </header>
 
-  <!-- PAGE HERO -->
-  <div class="page-hero" style="min-height:30vh;">
-    <div class="page-hero-content">
-      <h1>Tu Carrito</h1>
-      <p>Revisá tu pedido antes de finalizar.</p>
-    </div>
-  </div>
 
   <section class="section container">
     <div class="cart-page-grid" id="cart-page-content">
@@ -72,8 +73,8 @@
           <h4>Navegación</h4>
           <ul>
             <li><a href="index.html">Inicio</a></li>
-            <li><a href="nosotros.html">Nosotros</a></li>
             <li><a href="productos.html">Productos</a></li>
+            <li><a href="nosotros.html">Nosotros</a></li>
             <li><a href="recetas.html">Recetas</a></li>
           </ul>
         </div>
@@ -114,7 +115,7 @@
         const product = getProductById(item.id);
         return `
           <div class="cart-page-item reveal">
-            <div class="cart-page-item-icon">${item.icon}</div>
+            <div class="cart-page-item-icon">${item.image ? `<img src="${item.image}" alt="${item.name}" style="width:100%;height:100%;object-fit:contain;border-radius:6px;">` : item.icon}</div>
             <div class="cart-page-item-info">
               <a href="producto.html?id=${item.id}" class="cart-page-item-name">${item.name}</a>
               <p class="cart-page-item-sub">${product ? product.weight : ''}</p>
@@ -124,7 +125,11 @@
               <span>${item.qty}</span>
               <button class="qty-btn" onclick="updateQty('${item.id}', 1); renderCartPage();">+</button>
             </div>
-            <div class="cart-page-item-price">${formatPrice(item.price * item.qty)}</div>
+            <div class="cart-page-item-price">
+              ${item.originalPrice ? `<span style="font-size:0.8rem;color:var(--red);text-decoration:line-through;opacity:0.8;display:block;">${formatPrice(item.originalPrice * item.qty)}</span>` : ''}
+              <span style="color:var(--green-dark);font-weight:700;">${formatPrice(item.price * item.qty)}</span>
+              <span style="background:var(--green-dark);color:#fff;font-size:0.65rem;font-weight:700;padding:0.05rem 0.4rem;border-radius:10px;margin-left:0.3rem;">-40%</span>
+            </div>
             <button class="cart-page-item-remove" onclick="removeFromCart('${item.id}'); renderCartPage();" aria-label="Eliminar">✕</button>
           </div>`;
       }).join('');

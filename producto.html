@@ -13,6 +13,13 @@
     <span class="leaf">🍀</span><span class="leaf">🌿</span><span class="leaf">🍃</span>
   </div>
 
+  <!-- PROMO BAR -->
+  <div class="promo-bar">
+    <span>🏦 Banco Provincia</span>
+    <span class="promo-pct">40% OFF</span>
+    <span>con tu cuenta DNI</span>
+  </div>
+
   <header id="site-header">
     <nav>
       <a href="index.html" class="logo">
@@ -21,9 +28,10 @@
       <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
       <ul class="nav-links" id="nav-links">
         <li><a href="index.html">Inicio</a></li>
-        <li><a href="nosotros.html">Nosotros</a></li>
         <li><a href="productos.html">Productos</a></li>
+        <li><a href="nosotros.html">Nosotros</a></li>
         <li><a href="recetas.html">Recetas</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
         <li>
           <button class="cart-nav-btn" onclick="openCartDrawer()" aria-label="Carrito">
             🛒 <span class="cart-badge" style="display:none;">0</span>
@@ -37,20 +45,20 @@
   </header>
 
   <!-- BREADCRUMB -->
-  <div style="background:var(--beige-dark); padding: 0.3rem 0; border-bottom:1px solid var(--beige-dark);">
+  <div style="background:var(--beige-dark); padding: 0.18rem 0; border-bottom:1px solid rgba(0,0,0,0.06);">
     <div class="container">
-      <nav aria-label="Breadcrumb" style="font-size:0.72rem; color:var(--text-muted); display:flex; gap:0.35rem; align-items:center; flex-wrap:wrap; opacity:0.75;">
-        <a href="index.html" style="color:var(--text-muted);">Inicio</a>
+      <div aria-label="Breadcrumb" style="font-family:var(--font); font-size:0.68rem; color:var(--text-muted); display:flex; gap:0.3rem; align-items:center; flex-wrap:wrap; opacity:0.6; line-height:1.6;">
+        <a href="index.html" style="color:inherit;">Inicio</a>
         <span>›</span>
-        <a href="productos.html" style="color:var(--text-muted);">Productos</a>
+        <a href="productos.html" style="color:inherit;">Productos</a>
         <span>›</span>
         <span id="breadcrumb-name" style="color:var(--red);">Cargando...</span>
-      </nav>
+      </div>
     </div>
   </div>
 
   <!-- PRODUCT DETAIL -->
-  <section class="section container" id="product-section">
+  <section class="section container" id="product-section" style="padding-top:2.5rem;">
     <div class="product-detail-grid">
 
       <!-- IMAGE -->
@@ -76,7 +84,11 @@
 
         <!-- Price + Add to cart -->
         <div class="product-atc-block">
-          <p id="product-price" style="font-size:1.8rem; font-family:var(--font-heading); color:var(--red); font-weight:700; margin:0 0 0.8rem;"></p>
+          <div style="margin:0 0 0.8rem; display:flex; align-items:baseline; gap:0.7rem; flex-wrap:wrap;">
+          <span id="product-price-original" style="font-size:1.1rem; font-family:var(--font-heading); color:var(--red); font-weight:600; text-decoration:line-through; opacity:0.7;"></span>
+          <span id="product-price" style="font-size:1.8rem; font-family:var(--font-heading); color:var(--green-dark); font-weight:700;"></span>
+          <span style="background:var(--green-dark); color:#fff; font-size:0.72rem; font-weight:700; padding:0.15rem 0.55rem; border-radius:20px; letter-spacing:0.5px;">-40%</span><span style="font-size:0.78rem; color:var(--green-dark); font-weight:600;"> cuenta DNI</span>
+        </div>
           <div class="atc-controls">
             <div class="qty-selector">
               <button class="qty-btn-lg" id="qty-minus" onclick="changeQty(-1)">−</button>
@@ -150,8 +162,8 @@
           <h4>Navegación</h4>
           <ul>
             <li><a href="index.html">Inicio</a></li>
-            <li><a href="nosotros.html">Nosotros</a></li>
             <li><a href="productos.html">Productos</a></li>
+            <li><a href="nosotros.html">Nosotros</a></li>
             <li><a href="recetas.html">Recetas</a></li>
           </ul>
         </div>
@@ -218,10 +230,12 @@
             style="padding:8px 20px; border-radius:30px; border:2px solid ${i === 0 ? 'var(--green)' : 'var(--beige-dark)'}; background:${i === 0 ? 'var(--green)' : 'var(--white)'}; color:${i === 0 ? 'white' : 'var(--text-mid)'}; font-family:var(--font); font-weight:600; font-size:0.88rem; cursor:pointer; transition:all 0.3s;">
             ${v.label} — ${formatPrice(v.price)}
           </button>`).join('');
-        document.getElementById('product-price').textContent = formatPrice(selectedVariant.price);
+        document.getElementById('product-price-original').textContent = formatPrice(selectedVariant.price);
+        document.getElementById('product-price').textContent = formatPrice(Math.round(selectedVariant.price * 0.6));
       } else {
         selectedVariant = null;
-        document.getElementById('product-price').textContent = formatPrice(product.price);
+        document.getElementById('product-price-original').textContent = formatPrice(product.price);
+        document.getElementById('product-price').textContent = formatPrice(Math.round(product.price * 0.6));
       }
 
       // Try to show image
@@ -233,8 +247,8 @@
         img.src = product.image;
         img.alt = product.name;
         if (isProductPhoto) {
-          placeholder.style.cssText = 'background:white; border:1px solid var(--beige-dark); box-shadow:var(--shadow); border-radius:var(--radius-lg); padding:0.5rem; display:flex; align-items:center; justify-content:center; overflow:hidden;';
-          img.style.cssText = 'width:100%; height:100%; object-fit:contain; display:block; max-height:520px;';
+          placeholder.style.cssText = 'background:white; border:1px solid var(--beige-dark); box-shadow:var(--shadow); border-radius:var(--radius-lg); padding:0; display:flex; align-items:center; justify-content:center; overflow:hidden;';
+          img.style.cssText = 'width:100%; height:100%; object-fit:contain; display:block;';
           placeholder.innerHTML = '';
           placeholder.appendChild(img);
         } else {
@@ -254,20 +268,24 @@
       `).join('');
 
       // Related products (same category, excluding self, max 4)
-      const related = PRODUCTS.filter(p => p.category === product.category && p.id !== product.id).slice(0, 4);
+      const related = PRODUCTS.filter(p => p.category === product.category && p.id !== product.id && p.image).slice(0, 4);
       document.getElementById('related-products').innerHTML = related.map(p => `
-        <a href="producto.html?id=${p.id}" class="product-card" style="text-decoration:none; display:block;">
-          <span class="product-icon">${p.icon}</span>
-          <h3>${p.name}</h3>
-          <p>${p.tagline}</p>
-          <p style="color:var(--red); font-weight:600; margin-top:0.8rem; font-size:1rem;">${formatPrice(p.price)}</p>
-        </a>
+        <div class="product-card-wrapper">
+          <a href="producto.html?id=${p.id}" class="product-card-link">
+            <div class="product-card-img" style="background-image:url('${p.image}');"></div>
+            ${p.badge ? `<span class="product-badge">${p.badge}</span>` : ''}
+            <h3>${p.name}</h3>
+            <p style="color:var(--green); font-weight:600; font-size:0.95rem; margin:0.4rem 0.8rem 0.2rem;">${formatPrice(p.price)}</p>
+          </a>
+          <button class="product-card-atc" onclick="addToCart('${p.id}'); event.stopPropagation();">+ Agregar</button>
+        </div>
       `).join('');
     }
 
     function selectVariant(index) {
       selectedVariant = currentProduct.variants[index];
-      document.getElementById('product-price').textContent = formatPrice(selectedVariant.price);
+      document.getElementById('product-price-original').textContent = formatPrice(selectedVariant.price);
+      document.getElementById('product-price').textContent = formatPrice(Math.round(selectedVariant.price * 0.6));
       document.querySelectorAll('.variant-btn').forEach((btn, i) => {
         const active = i === index;
         btn.style.background = active ? 'var(--green)' : 'var(--white)';
