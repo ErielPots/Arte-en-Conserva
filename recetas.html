@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recetas — Arte en Conserva</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="floating-leaves" aria-hidden="true">
+    <span class="leaf">🌿</span><span class="leaf">🍃</span><span class="leaf">🌱</span>
+    <span class="leaf">🍀</span><span class="leaf">🌿</span><span class="leaf">🍃</span>
+  </div>
+
+  <header id="site-header">
+    <nav>
+      <a href="index.html" class="logo">
+        <img src="assets/img/arte_en_conserva_transparente.png" alt="Arte en Conserva">
+      </a>
+      <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="nosotros.html">Nosotros</a></li>
+        <li><a href="productos.html">Productos</a></li>
+        <li><a href="recetas.html" class="active">Recetas</a></li>
+        <li>
+          <button class="cart-nav-btn" onclick="openCartDrawer()" aria-label="Carrito">
+            🛒 <span class="cart-badge" style="display:none;">0</span>
+          </button>
+        </li>
+      </ul>
+      <button class="cart-nav-btn mobile-cart" onclick="openCartDrawer()" aria-label="Carrito">
+        🛒 <span class="cart-badge" style="display:none;">0</span>
+      </button>
+    </nav>
+  </header>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="page-hero-content">
+      <h1>Nuestras Recetas</h1>
+      <p>Ideas creativas para disfrutar tus conservas más allá del desayuno.</p>
+    </div>
+  </div>
+
+  <section class="section container">
+    <span class="section-label" style="display:block; text-align:center;">Inspiración culinaria</span>
+    <h2 class="section-title centered reveal">Más allá del desayuno</h2>
+    <p class="section-lead centered reveal delay-1">Nuestras mermeladas y conservas son versátiles, originales y deliciosas en cualquier momento del día.</p>
+
+    <div class="recipes-grid">
+
+      <!-- RECETA 1 -->
+      <div class="recipe-card reveal delay-1">
+        <div class="recipe-img">
+          <img src="assets/img/recipe_tarta_1777949385974.png" alt="Tarta de mermelada de frutilla">
+        </div>
+        <div class="recipe-content">
+          <span class="recipe-tag">🍓 Postre</span>
+          <h3>Tarta Clásica de Frutilla</h3>
+          <p>Una masa sableé crujiente rellena con nuestra abundante mermelada de frutilla. Perfecta para la hora del té.</p>
+          <div class="recipe-meta">
+            <span>⏱ 45 min</span>
+            <span>👤 8 porciones</span>
+            <span>⭐ Fácil</span>
+          </div>
+          <div style="margin-top:1.2rem;">
+            <button class="recipe-toggle" onclick="toggleRecipe(this)">
+              Ver receta completa <span class="arrow">▼</span>
+            </button>
+          </div>
+          <div class="recipe-details">
+            <h4>Ingredientes</h4>
+            <ul>
+              <li>1 frasco de mermelada de frutilla Arte en Conserva</li>
+              <li>250 g de harina 0000</li>
+              <li>125 g de manteca fría en cubos</li>
+              <li>80 g de azúcar impalpable</li>
+              <li>2 yemas de huevo</li>
+              <li>1 cucharada de agua fría</li>
+              <li>Pizca de sal</li>
+            </ul>
+            <h4>Preparación</h4>
+            <ol>
+              <li>Mezclar harina, azúcar y sal. Incorporar la manteca con los dedos hasta obtener migas gruesas.</li>
+              <li>Agregar las yemas y el agua fría. Amasar brevemente hasta unir.</li>
+              <li>Refrigerar la masa 30 minutos envuelta en film.</li>
+              <li>Estirar y forrar un molde de 24 cm. Pinchar la base con un tenedor.</li>
+              <li>Hornear a 180°C durante 15 min. Dejar enfriar.</li>
+              <li>Rellenar con la mermelada y servir.</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      <!-- RECETA 2 -->
+      <div class="recipe-card reveal delay-2">
+        <div class="recipe-img">
+          <img src="assets/img/recipe_bruschetta_1777949400026.png" alt="Bruschettas con queso de cabra y mermelada de tomate">
+        </div>
+        <div class="recipe-content">
+          <span class="recipe-tag">🧀 Entrada</span>
+          <h3>Bruschettas con Queso y Tomate</h3>
+          <p>Pan artesanal tostado con queso de cabra cremoso y mermelada de tomate. Un contraste agridulce espectacular.</p>
+          <div class="recipe-meta">
+            <span>⏱ 15 min</span>
+            <span>👤 4 porciones</span>
+            <span>⭐ Muy fácil</span>
+          </div>
+          <div style="margin-top:1.2rem;">
+            <button class="recipe-toggle" onclick="toggleRecipe(this)">
+              Ver receta completa <span class="arrow">▼</span>
+            </button>
+          </div>
+          <div class="recipe-details">
+            <h4>Ingredientes</h4>
+            <ul>
+              <li>1 frasco de mermelada de tomate Arte en Conserva</li>
+              <li>1 baguette o pan artesanal</li>
+              <li>200 g de queso de cabra cremoso</li>
+              <li>Aceite de oliva extra virgen</li>
+              <li>Hojas de albahaca fresca</li>
+              <li>Sal gruesa y pimienta negra</li>
+            </ul>
+            <h4>Preparación</h4>
+            <ol>
+              <li>Cortar el pan en rebanadas de 1,5 cm y tostar en horno o plancha.</li>
+              <li>Frotar cada tostada con un poco de aceite de oliva.</li>
+              <li>Untar generosamente con el queso de cabra.</li>
+              <li>Colocar una cucharada de mermelada de tomate encima.</li>
+              <li>Decorar con hojas de albahaca, sal gruesa y un chorrito de aceite.</li>
+              <li>Servir inmediatamente.</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      <!-- RECETA 3 -->
+      <div class="recipe-card reveal delay-3">
+        <div class="recipe-img">
+          <img src="assets/img/recipe_glaseado_1777949416506.png" alt="Pollo glaseado con mermelada de ciruela">
+        </div>
+        <div class="recipe-content">
+          <span class="recipe-tag">🍗 Principal</span>
+          <h3>Pollo Glaseado con Ciruela</h3>
+          <p>Mermelada de ciruela, salsa de soja y mostaza para un glaseado irresistible. El pollo más pedido en reuniones.</p>
+          <div class="recipe-meta">
+            <span>⏱ 1 hora</span>
+            <span>👤 4 porciones</span>
+            <span>⭐ Intermedio</span>
+          </div>
+          <div style="margin-top:1.2rem;">
+            <button class="recipe-toggle" onclick="toggleRecipe(this)">
+              Ver receta completa <span class="arrow">▼</span>
+            </button>
+          </div>
+          <div class="recipe-details">
+            <h4>Ingredientes</h4>
+            <ul>
+              <li>1 pollo entero o 4 muslos/pechugas</li>
+              <li>4 cucharadas de mermelada de ciruela Arte en Conserva</li>
+              <li>2 cucharadas de salsa de soja</li>
+              <li>1 cucharada de mostaza Dijon</li>
+              <li>2 dientes de ajo picados</li>
+              <li>Sal, pimienta y tomillo a gusto</li>
+            </ul>
+            <h4>Preparación</h4>
+            <ol>
+              <li>Mezclar la mermelada de ciruela, salsa de soja, mostaza y ajo.</li>
+              <li>Salpimentar el pollo y colocarlo en una fuente para horno.</li>
+              <li>Pincelar el pollo con la mitad del glaseado.</li>
+              <li>Hornear a 200°C durante 40 minutos.</li>
+              <li>A los 20 minutos, pincelar con el glaseado restante.</li>
+              <li>Retirar cuando esté dorado y la piel crujiente. Reposar 10 min antes de servir.</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      <!-- RECETA 4 -->
+      <div class="recipe-card reveal delay-1">
+        <div class="recipe-img">
+          <img src="assets/img/recipe_queso_higo_1777949503749.png" alt="Tabla de quesos con mermelada de higo">
+        </div>
+        <div class="recipe-content">
+          <span class="recipe-tag">🍷 Tabla</span>
+          <h3>Tabla de Quesos con Higo</h3>
+          <p>El maridaje perfecto. Quesos maduros, frutos secos y nuestra mermelada de higo para reuniones especiales.</p>
+          <div class="recipe-meta">
+            <span>⏱ 10 min</span>
+            <span>👤 6 porciones</span>
+            <span>⭐ Muy fácil</span>
+          </div>
+          <div style="margin-top:1.2rem;">
+            <button class="recipe-toggle" onclick="toggleRecipe(this)">
+              Ver receta completa <span class="arrow">▼</span>
+            </button>
+          </div>
+          <div class="recipe-details">
+            <h4>Ingredientes</h4>
+            <ul>
+              <li>1 frasco de mermelada de higo Arte en Conserva</li>
+              <li>Brie o camembert (200 g)</li>
+              <li>Queso azul (100 g)</li>
+              <li>Queso de oveja curado (100 g)</li>
+              <li>Nueces y almendras</li>
+              <li>Uvas y dátiles</li>
+              <li>Crackers o pan de campo</li>
+            </ul>
+            <h4>Armado</h4>
+            <ol>
+              <li>Seleccionar una tabla de madera grande y limpiarla bien.</li>
+              <li>Distribuir los quesos en distintos puntos de la tabla.</li>
+              <li>Colocar un pequeño cuenco con la mermelada de higo en el centro.</li>
+              <li>Rellenar los espacios con nueces, almendras, uvas y dátiles.</li>
+              <li>Agregar los crackers o pan cortado en los bordes.</li>
+              <li>Servir a temperatura ambiente para que los quesos expresen su sabor.</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      <!-- RECETA 5 -->
+      <div class="recipe-card reveal delay-2">
+        <div class="recipe-img">
+          <img src="assets/img/recipe_tostadas_1777949430375.png" alt="Tostadas con mermelada de durazno">
+        </div>
+        <div class="recipe-content">
+          <span class="recipe-tag">☀️ Desayuno</span>
+          <h3>El Desayuno Perfecto</h3>
+          <p>Pan casero tibio, manteca y nuestra mermelada de durazno. El sabor del verano para empezar el día con todo.</p>
+          <div class="recipe-meta">
+            <span>⏱ 5 min</span>
+            <span>👤 2 porciones</span>
+            <span>⭐ Muy fácil</span>
+          </div>
+          <div style="margin-top:1.2rem;">
+            <button class="recipe-toggle" onclick="toggleRecipe(this)">
+              Ver receta completa <span class="arrow">▼</span>
+            </button>
+          </div>
+          <div class="recipe-details">
+            <h4>Ingredientes</h4>
+            <ul>
+              <li>Mermelada de durazno Arte en Conserva (a gusto)</li>
+              <li>4 rebanadas de pan casero o de campo</li>
+              <li>Manteca o crema de leche</li>
+              <li>Opcional: ricotta o queso crema</li>
+              <li>Opcional: semillas de chía o granola</li>
+            </ul>
+            <h4>Preparación</h4>
+            <ol>
+              <li>Tostar el pan hasta que esté dorado y crujiente por fuera.</li>
+              <li>Untar manteca en caliente para que se derrita sobre el pan.</li>
+              <li>Agregar una cucharada generosa de mermelada de durazno.</li>
+              <li>Para una versión especial, combinar ricotta y mermelada.</li>
+              <li>Espolvorear semillas o granola para darle textura.</li>
+              <li>Servir con té, café con leche o mate. ¡Buen provecho!</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="quote-banner">
+    <p class="quote-text reveal">¿Querés más ideas? Seguinos en redes<br>y compartí tus creaciones con nosotros.</p>
+    <div style="margin-top:1.5rem;" class="reveal delay-2">
+      <a href="productos.html" class="btn btn-primary" style="background:white; color:var(--green-dark);">Ver todos los productos →</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo">
+            <div>
+              <span class="logo-text">Arte en Conserva</span>
+              <span class="logo-sub">Berisso · Argentina</span>
+            </div>
+          </div>
+          <p>Mermeladas y conservas artesanales elaboradas en pequeños lotes. Producimos con amor desde Berisso.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Instagram">📷</a>
+            <a href="#" aria-label="Facebook">📘</a>
+            <a href="#" aria-label="WhatsApp">💬</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Navegación</h4>
+          <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="nosotros.html">Nosotros</a></li>
+            <li><a href="productos.html">Productos</a></li>
+            <li><a href="recetas.html">Recetas</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Productos</h4>
+          <ul>
+            <li><a href="productos.html#mermeladas">Mermeladas</a></li>
+            <li><a href="productos.html#conservas">Conservas</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Arte en Conserva — Todos los derechos reservados</p>
+        <p>Hecho con 🌿 en Berisso, Argentina</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/products.js"></script>
+  <script src="js/cart.js"></script>
+  <script>
+    function toggleRecipe(btn) {
+      const details = btn.closest('.recipe-content').querySelector('.recipe-details');
+      const isOpen = details.classList.contains('open');
+      details.classList.toggle('open', !isOpen);
+      btn.classList.toggle('open', !isOpen);
+      btn.querySelector('.arrow').textContent = isOpen ? '▼' : '▲';
+    }
+
+    const header = document.getElementById('site-header');
+    window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 50), { passive: true });
+
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      navLinks.classList.toggle('open');
+      document.body.style.overflow = navLinks.classList.contains('open') ? 'hidden' : '';
+    });
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

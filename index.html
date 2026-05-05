@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arte en Conserva — Mermeladas y Conservas Artesanales de Berisso</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Decoración flotante de fondo -->
+  <div class="floating-leaves" aria-hidden="true">
+    <span class="leaf">🌿</span>
+    <span class="leaf">🍃</span>
+    <span class="leaf">🌱</span>
+    <span class="leaf">🍀</span>
+    <span class="leaf">🌿</span>
+    <span class="leaf">🍃</span>
+  </div>
+
+  <!-- HEADER -->
+  <header id="site-header">
+    <nav>
+      <a href="index.html" class="logo">
+        <img src="assets/img/arte_en_conserva_transparente.png" alt="Arte en Conserva">
+      </a>
+      <button class="hamburger" id="hamburger" aria-label="Menú">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html" class="active">Inicio</a></li>
+        <li><a href="nosotros.html">Nosotros</a></li>
+        <li><a href="productos.html">Productos</a></li>
+        <li><a href="recetas.html">Recetas</a></li>
+        <li>
+          <button class="cart-nav-btn" onclick="openCartDrawer()" aria-label="Carrito">
+            🛒 <span class="cart-badge" style="display:none;">0</span>
+          </button>
+        </li>
+      </ul>
+      <button class="cart-nav-btn mobile-cart" onclick="openCartDrawer()" aria-label="Carrito">
+        🛒 <span class="cart-badge" style="display:none;">0</span>
+      </button>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-bg" id="hero-bg" style="background-image: url('assets/img/pepinillos_tomate_pasto.jpg');"></div>
+    <div class="hero-content">
+      <span class="hero-tag">🌿 Berisso · Argentina</span>
+      <h1>El sabor <em>auténtico</em><br>de la tierra</h1>
+      <p>Mermeladas y conservas artesanales elaboradas en pequeños lotes, con frutas de estación y sin un solo aditivo.</p>
+      <div class="hero-btns">
+        <a href="productos.html" class="btn btn-primary">Ver Productos</a>
+        <a href="nosotros.html" class="btn btn-outline">Nuestra Historia</a>
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      <span>Descubrir</span>
+      <div class="arrow"></div>
+    </div>
+  </section>
+
+  <!-- VALUES STRIP -->
+  <div class="values-strip">
+    <div class="values-strip-inner container">
+      <div class="value-item reveal delay-1">
+        <span class="icon">🏺</span>
+        <div>
+          <h4>100% Artesanal</h4>
+          <p>Elaboradas a mano, en pequeños lotes</p>
+        </div>
+      </div>
+      <div class="value-item reveal delay-2">
+        <span class="icon">🌱</span>
+        <div>
+          <h4>Sin Aditivos</h4>
+          <p>Solo fruta, azúcar y limón</p>
+        </div>
+      </div>
+      <div class="value-item reveal delay-3">
+        <span class="icon">📍</span>
+        <div>
+          <h4>Producto Local</h4>
+          <p>Ingredientes de productores de Berisso</p>
+        </div>
+      </div>
+      <div class="value-item reveal delay-4">
+        <span class="icon">🍂</span>
+        <div>
+          <h4>De Estación</h4>
+          <p>Frutas y verduras en su punto justo</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ACERCA DE -->
+  <section class="section container">
+    <div class="about-grid">
+      <div class="about-photo reveal-left">
+        <img src="assets/img/feria.jpg" alt="Fundadora de Arte en Conserva en la feria de Berisso"
+          style="width:100%; border-radius:var(--radius-lg); box-shadow:var(--shadow-lg);">
+      </div>
+      <div class="about-text reveal-right">
+        <span class="section-label">Nuestra historia</span>
+        <h2 class="section-title">Lo que comemos<br>importa</h2>
+        <p>En <strong>Arte en Conserva</strong> creemos que lo que comemos importa — su origen, su proceso, quién lo hizo y cómo. Por eso producimos de forma artesanal, con ingredientes locales, en pequeños lotes, sin atajos ni aditivos.</p>
+        <div style="margin-top:1.5rem; display:flex; flex-direction:column; gap:1rem;">
+          <div style="display:flex; gap:0.8rem; align-items:flex-start;">
+            <span style="font-size:1.2rem; flex-shrink:0;">🏺</span>
+            <div><strong>Producción artesanal en Berisso</strong><br><span style="color:var(--text-muted); font-size:0.95rem;">Elaboramos en pequeños lotes, controlando cada etapa del proceso de principio a fin.</span></div>
+          </div>
+          <div style="display:flex; gap:0.8rem; align-items:flex-start;">
+            <span style="font-size:1.2rem; flex-shrink:0;">📍</span>
+            <div><strong>Ingredientes locales y trazables</strong><br><span style="color:var(--text-muted); font-size:0.95rem;">Trabajamos con productores de la región para garantizar frescura y origen conocido.</span></div>
+          </div>
+          <div style="display:flex; gap:0.8rem; align-items:flex-start;">
+            <span style="font-size:1.2rem; flex-shrink:0;">🌱</span>
+            <div><strong>Sin aditivos ni conservantes</strong><br><span style="color:var(--text-muted); font-size:0.95rem;">Cero agregados artificiales. Solo ingredientes que podés reconocer en la etiqueta.</span></div>
+          </div>
+          <div style="display:flex; gap:0.8rem; align-items:flex-start;">
+            <span style="font-size:1.2rem; flex-shrink:0;">💬</span>
+            <div><strong>Proceso transparente</strong><br><span style="color:var(--text-muted); font-size:0.95rem;">Mostramos cómo producimos porque no tenemos nada que ocultar y todo que compartir.</span></div>
+          </div>
+        </div>
+        <a href="nosotros.html" class="btn btn-ghost" style="margin-top:1rem;">Conocer más →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTE BANNER -->
+  <div class="quote-banner">
+    <p class="quote-text reveal">"Cada frasco es un poco de tiempo detenido,<br>un pedazo de estación preservado con amor."</p>
+    <p class="quote-author reveal delay-2">Arte en Conserva · Berisso</p>
+  </div>
+
+  <!-- CATEGORÍAS DE PRODUCTOS -->
+  <section class="section container">
+    <span class="section-label" style="display:block; text-align:center;">Lo que hacemos</span>
+    <h2 class="section-title centered reveal">Nuestros Productos</h2>
+    <p class="section-lead centered reveal delay-1">Dos grandes familias de sabores, elaboradas con el mismo cuidado y dedicación.</p>
+
+    <div class="category-cards">
+      <a href="productos.html#mermeladas" class="cat-card mermeladas reveal-left">
+        <div class="cat-card-img" style="background-image: url('assets/img/frascos_feria.jpg');"></div>
+        <div class="cat-card-content">
+          <span class="tag">🍓 Dulces</span>
+          <h3>Mermeladas</h3>
+          <p>8 variedades de frutas de estación. Frutilla, higo, mango, membrillo y más.</p>
+          <span class="btn btn-outline">Explorar →</span>
+        </div>
+      </a>
+      <a href="productos.html#conservas" class="cat-card reveal-right">
+        <div class="cat-card-img" style="background-image: url('assets/img/pickles_close.jpg');"></div>
+        <div class="cat-card-content">
+          <span class="tag">🥒 Saladas</span>
+          <h3>Conservas</h3>
+          <p>10 variedades de verduras y especias. Pepinillos, morrones, ajíes y más.</p>
+          <span class="btn btn-outline">Explorar →</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- RECETAS TEASER -->
+  <section class="section section-alt">
+    <div class="container">
+      <span class="section-label" style="display:block; text-align:center;">Inspiración</span>
+      <h2 class="section-title centered reveal">Con nuestras mermeladas</h2>
+      <p class="section-lead centered reveal delay-1">Más allá del desayuno — nuestras recetas favoritas para usar tus conservas.</p>
+
+      <div class="recipes-grid">
+        <div class="recipe-card reveal delay-1">
+          <div class="recipe-img">
+            <img src="assets/img/recipe_bruschetta_1777949400026.png" alt="Bruschettas con queso de cabra">
+          </div>
+          <div class="recipe-content">
+            <span class="recipe-tag">🧀 Entrada</span>
+            <h3>Bruschettas con Queso y Tomate</h3>
+            <p>Pan artesanal, queso de cabra cremoso y mermelada de tomate. Un contraste agridulce espectacular.</p>
+          </div>
+        </div>
+        <div class="recipe-card reveal delay-2">
+          <div class="recipe-img">
+            <img src="assets/img/recipe_glaseado_1777949416506.png" alt="Pollo glaseado con ciruela">
+          </div>
+          <div class="recipe-content">
+            <span class="recipe-tag">🍗 Principal</span>
+            <h3>Pollo Glaseado con Ciruela</h3>
+            <p>Mermelada de ciruela, soja y mostaza para glasear el pollo. Un plato salado elevado a otro nivel.</p>
+          </div>
+        </div>
+        <div class="recipe-card reveal delay-3">
+          <div class="recipe-img">
+            <img src="assets/img/recipe_queso_higo_1777949503749.png" alt="Tabla de quesos con higo">
+          </div>
+          <div class="recipe-content">
+            <span class="recipe-tag">🍷 Tabla</span>
+            <h3>Tabla de Quesos con Higo</h3>
+            <p>El maridaje perfecto para reuniones. Quesos maduros y nuestra mermelada de higo.</p>
+          </div>
+        </div>
+      </div>
+
+      <div style="text-align:center; margin-top:3rem;" class="reveal">
+        <a href="recetas.html" class="btn btn-green">Ver todas las recetas</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo">
+            <div>
+              <span class="logo-text">Arte en Conserva</span>
+              <span class="logo-sub">Berisso · Argentina</span>
+            </div>
+          </div>
+          <p>Mermeladas y conservas artesanales elaboradas en pequeños lotes, con ingredientes locales y de estación, sin atajos ni aditivos. Producimos con amor desde Berisso.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Instagram">📷</a>
+            <a href="#" aria-label="Facebook">📘</a>
+            <a href="#" aria-label="WhatsApp">💬</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Navegación</h4>
+          <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="nosotros.html">Nosotros</a></li>
+            <li><a href="productos.html">Productos</a></li>
+            <li><a href="recetas.html">Recetas</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Productos</h4>
+          <ul>
+            <li><a href="productos.html#mermeladas">Mermeladas</a></li>
+            <li><a href="productos.html#conservas">Conservas</a></li>
+            <li><a href="recetas.html">Recetas</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Arte en Conserva — Todos los derechos reservados</p>
+        <p>Hecho con 🌿 en Berisso, Argentina</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/products.js"></script>
+  <script src="js/cart.js"></script>
+  <script>
+    // Parallax hero
+    const heroBg = document.getElementById('hero-bg');
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      if (heroBg) heroBg.style.transform = `scale(1.05) translateY(${y * 0.25}px)`;
+    }, { passive: true });
+
+    // Header scroll shadow
+    const header = document.getElementById('site-header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 50);
+    }, { passive: true });
+
+    // Hamburger menu
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      navLinks.classList.toggle('open');
+      document.body.style.overflow = navLinks.classList.contains('open') ? 'hidden' : '';
+    });
+    navLinks.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        navLinks.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    });
+
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

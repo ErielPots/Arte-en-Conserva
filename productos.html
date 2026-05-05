@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Productos — Arte en Conserva</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="floating-leaves" aria-hidden="true">
+    <span class="leaf">🌿</span><span class="leaf">🍃</span><span class="leaf">🌱</span>
+    <span class="leaf">🍀</span><span class="leaf">🌿</span><span class="leaf">🍃</span>
+  </div>
+
+  <header id="site-header">
+    <nav>
+      <a href="index.html" class="logo">
+        <img src="assets/img/arte_en_conserva_transparente.png" alt="Arte en Conserva">
+      </a>
+      <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="nosotros.html">Nosotros</a></li>
+        <li><a href="productos.html" class="active">Productos</a></li>
+        <li><a href="recetas.html">Recetas</a></li>
+        <li>
+          <button class="cart-nav-btn" onclick="openCartDrawer()" aria-label="Carrito">
+            🛒 <span class="cart-badge" style="display:none;">0</span>
+          </button>
+        </li>
+      </ul>
+      <button class="cart-nav-btn mobile-cart" onclick="openCartDrawer()" aria-label="Carrito">
+        🛒 <span class="cart-badge" style="display:none;">0</span>
+      </button>
+    </nav>
+  </header>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="page-hero-content">
+      <h1>Nuestros Productos</h1>
+      <p>Mermeladas y conservas artesanales. Hacé click en cada producto para ver más detalles.</p>
+    </div>
+  </div>
+
+  <!-- PRODUCTS -->
+  <section class="products-section container" id="productos">
+    <div style="text-align:center; margin-bottom:1.5rem;">
+      <span class="section-label">Lo que hacemos</span>
+      <h2 class="section-title centered reveal">Con fruta y con amor</h2>
+      <p class="section-lead centered reveal delay-1">Elegí tu categoría y conocé todos los sabores disponibles.</p>
+    </div>
+
+    <div class="category-tabs reveal delay-2" role="tablist">
+      <button class="tab-btn active" id="tab-mermeladas" role="tab" aria-selected="true" aria-controls="pane-mermeladas" onclick="switchTab('mermeladas')">
+        🍓 Mermeladas
+      </button>
+      <button class="tab-btn green" id="tab-conservas" role="tab" aria-selected="false" aria-controls="pane-conservas" onclick="switchTab('conservas')" style="color:var(--text-muted);">
+        🥒 Conservas
+      </button>
+    </div>
+
+    <!-- MERMELADAS -->
+    <div class="tab-pane active" id="pane-mermeladas" role="tabpanel">
+      <div style="background:var(--beige-dark); border-radius:var(--radius); padding:1.2rem 1.5rem; margin-bottom:2.5rem; display:flex; align-items:center; gap:1rem; flex-wrap:wrap;">
+        <span style="font-size:1.5rem;">🏺</span>
+        <div>
+          <strong style="color:var(--red);">Mermeladas Artesanales</strong>
+          <p style="font-size:0.88rem; margin:0;">Elaboradas solo con frutas de primera calidad, azúcar y limón. Sin conservantes, sin colorantes, sin aditivos.</p>
+        </div>
+      </div>
+      <div class="products-grid" id="grid-mermeladas"></div>
+    </div>
+
+    <!-- CONSERVAS -->
+    <div class="tab-pane" id="pane-conservas" role="tabpanel">
+      <div style="background:var(--beige-dark); border-radius:var(--radius); padding:1.2rem 1.5rem; margin-bottom:2.5rem; display:flex; align-items:center; gap:1rem; flex-wrap:wrap;">
+        <span style="font-size:1.5rem;">🥒</span>
+        <div>
+          <strong style="color:var(--green-dark);">Conservas Artesanales</strong>
+          <p style="font-size:0.88rem; margin:0;">Verduras y especias de estación preparadas con recetas tradicionales para acompañar tus comidas.</p>
+        </div>
+      </div>
+      <div class="products-grid" id="grid-conservas"></div>
+    </div>
+  </section>
+
+  <div style="background:var(--green); padding:3rem 0; margin:2rem 0;">
+    <div class="container" style="text-align:center;">
+      <p style="font-family:var(--font-script); font-size:1.8rem; color:white; margin-bottom:0.5rem;">"Sin conservantes. Sin colorantes. Sin atajos."</p>
+      <p style="color:rgba(255,255,255,0.85); font-size:0.9rem; text-transform:uppercase; letter-spacing:2px;">Solo fruta · Azúcar · Limón</p>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo">
+            <div>
+              <span class="logo-text">Arte en Conserva</span>
+              <span class="logo-sub">Berisso · Argentina</span>
+            </div>
+          </div>
+          <p>Mermeladas y conservas artesanales elaboradas en pequeños lotes. Producimos con amor desde Berisso.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Instagram">📷</a>
+            <a href="#" aria-label="Facebook">📘</a>
+            <a href="#" aria-label="WhatsApp">💬</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Navegación</h4>
+          <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="nosotros.html">Nosotros</a></li>
+            <li><a href="productos.html">Productos</a></li>
+            <li><a href="recetas.html">Recetas</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Productos</h4>
+          <ul>
+            <li><a href="#" onclick="switchTab('mermeladas'); return false;">Mermeladas</a></li>
+            <li><a href="#" onclick="switchTab('conservas'); return false;">Conservas</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Arte en Conserva — Todos los derechos reservados</p>
+        <p>Hecho con 🌿 en Berisso, Argentina</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/products.js"></script>
+  <script src="js/cart.js"></script>
+  <script>
+    function renderProductCard(product) {
+      return `
+        <div class="product-card-wrapper reveal">
+          <a href="producto.html?id=${product.id}" class="product-card product-card-link ${product.category === 'conserva' ? 'green-accent' : ''}">
+            ${product.badge ? `<span class="product-badge">${product.badge}</span>` : ''}
+            <span class="product-icon">${product.icon}</span>
+            <h3>${product.name}</h3>
+            <p>${product.tagline}</p>
+            <p class="product-card-price">${formatPrice(product.price)}</p>
+          </a>
+          <button class="product-card-atc" onclick="addToCart('${product.id}'); event.stopPropagation();">
+            + Agregar
+          </button>
+        </div>`;
+    }
+
+    function renderAllProducts() {
+      document.getElementById('grid-mermeladas').innerHTML =
+        getProductsByCategory('mermelada').map(renderProductCard).join('');
+      document.getElementById('grid-conservas').innerHTML =
+        getProductsByCategory('conserva').map(renderProductCard).join('');
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    }
+
+    function switchTab(tab) {
+      document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => {
+        b.classList.remove('active');
+        b.style.color = 'var(--text-muted)';
+        b.setAttribute('aria-selected', 'false');
+      });
+      document.getElementById('pane-' + tab).classList.add('active');
+      const btn = document.getElementById('tab-' + tab);
+      btn.classList.add('active');
+      btn.style.color = '';
+      btn.setAttribute('aria-selected', 'true');
+      document.querySelectorAll('#pane-' + tab + ' .reveal').forEach(el => {
+        el.classList.remove('visible');
+        setTimeout(() => observer.observe(el), 50);
+      });
+      history.replaceState(null, '', '#' + tab);
+    }
+
+    if (window.location.hash === '#conservas') switchTab('conservas');
+
+    const header = document.getElementById('site-header');
+    window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 50), { passive: true });
+
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      navLinks.classList.toggle('open');
+      document.body.style.overflow = navLinks.classList.contains('open') ? 'hidden' : '';
+    });
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => observer.observe(el));
+    renderAllProducts();
+  </script>
+</body>
+</html>
