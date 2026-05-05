@@ -138,14 +138,17 @@
   <script src="js/cart.js"></script>
   <script>
     function renderProductCard(product) {
+      const imgHtml = product.image
+        ? `<div class="product-card-img" style="background-image:url('${product.image}');"></div>`
+        : `<span class="product-icon">${product.icon}</span>`;
       return `
         <div class="product-card-wrapper reveal">
-          <a href="producto.html?id=${product.id}" class="product-card product-card-link ${product.category === 'conserva' ? 'green-accent' : ''}">
+          <a href="producto.html?id=${product.id}" class="product-card product-card-link ${product.category === 'conserva' ? 'green-accent' : ''} ${product.image ? 'has-img' : ''}">
             ${product.badge ? `<span class="product-badge">${product.badge}</span>` : ''}
-            <span class="product-icon">${product.icon}</span>
+            ${imgHtml}
             <h3>${product.name}</h3>
             <p>${product.tagline}</p>
-            <p class="product-card-price">${formatPrice(product.price)}</p>
+            <p class="product-card-price">${product.variants ? 'Desde ' + formatPrice(product.price) : formatPrice(product.price)}</p>
           </a>
           <button class="product-card-atc" onclick="addToCart('${product.id}'); event.stopPropagation();">
             + Agregar

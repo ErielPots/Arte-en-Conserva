@@ -85,6 +85,12 @@
           </div>
         </div>
 
+        <!-- Selector de tamaño (conservas con variantes) -->
+        <div id="variant-selector" style="display:none; margin-bottom:1.2rem;">
+          <span style="font-size:0.8rem; text-transform:uppercase; letter-spacing:2px; color:var(--text-muted); display:block; margin-bottom:0.6rem;">Tamaño</span>
+          <div id="variant-options" style="display:flex; gap:0.8rem; flex-wrap:wrap;"></div>
+        </div>
+
         <!-- Price + Add to cart -->
         <div class="product-atc-block">
           <div>
@@ -171,8 +177,8 @@
   <script src="js/products.js"></script>
   <script src="js/cart.js"></script>
   <script>
-    // Load product from URL
     let currentProduct = null;
+    let selectedVariant = null;
 
     function loadProduct() {
       const params = new URLSearchParams(window.location.search);
@@ -207,7 +213,20 @@
       document.getElementById('product-description').textContent = product.description;
       document.getElementById('product-ingredients').textContent = product.ingredients.join(' · ');
       document.getElementById('product-season').textContent = product.season;
-      document.getElementById('product-price').textContent = formatPrice(product.price);
+      // Variantes de tamaño
+      if (product.variants) {
+        selectedVariant = product.variants[0];
+        document.getElementById('variant-selector').style.display = 'block';
+        document.getElementById('variant-options').innerHTML = product.variants.map((v, i) => `
+          <button class="variant-btn ${i === 0 ? 'active' : ''}" onclick="selectVariant(${i})"
+            style="padding:8px 20px; border-radius:30px; border:2px solid ${i === 0 ? 'var(--green)' : 'var(--beige-dark)'}; background:${i === 0 ? 'var(--green)' : 'var(--white)'}; color:${i === 0 ? 'white' : 'var(--text-mid)'}; font-family:var(--font); font-weight:600; font-size:0.88rem; cursor:pointer; transition:all 0.3s;">
+            ${v.label} — ${formatPrice(v.price)}
+          </button>`).join('');
+        document.getElementById('product-price').textContent = formatPrice(selectedVariant.price);
+      } else {
+        selectedVariant = null;
+        document.getElementById('product-price').textContent = formatPrice(product.price);
+      }
 
       // Try to show image
       const imgWrapper = document.getElementById('product-img-wrapper');
@@ -251,6 +270,17 @@
       `).join('');
     }
 
+    function selectVariant(index) {
+      selectedVariant = currentProduct.variants[index];
+      document.getElementById('product-price').textContent = formatPrice(selectedVariant.price);
+      document.querySelectorAll('.variant-btn').forEach((btn, i) => {
+        const active = i === index;
+        btn.style.background = active ? 'var(--green)' : 'var(--white)';
+        btn.style.borderColor = active ? 'var(--green)' : 'var(--beige-dark)';
+        btn.style.color = active ? 'white' : 'var(--text-mid)';
+      });
+    }
+
     function changeQty(delta) {
       const input = document.getElementById('qty-input');
       input.value = Math.max(1, parseInt(input.value || 1) + delta);
@@ -259,7 +289,7 @@
     function handleAddToCart() {
       if (!currentProduct) return;
       const qty = parseInt(document.getElementById('qty-input').value) || 1;
-      addToCart(currentProduct.id, qty);
+      addToCart(currentProduct.id, qty, selectedVariant);
 
       const btn = document.getElementById('atc-btn');
       btn.textContent = '✓ Agregado!';

@@ -37,8 +37,8 @@
   </header>
 
   <!-- PAGE HERO con foto real del puesto -->
-  <div class="page-hero" style="min-height:55vh;">
-    <div class="hero-bg" style="background-image: url('assets/img/puesto_feria.jpg'); opacity:0.45; position:absolute; inset:0; background-size:cover; background-position:center top;"></div>
+  <div class="page-hero">
+    <div class="hero-bg" style="background-image: url('assets/img/puesto_feria.jpg'); position:absolute; inset:0; background-size:cover; background-position:center top;"></div>
     <div class="page-hero-content">
       <h1>Nuestra Historia</h1>
       <p>Un emprendimiento nacido en Berisso con el corazón puesto en los sabores de la tierra.</p>
@@ -78,36 +78,23 @@
         </div>
       </div>
 
-      <!-- Foto real de la fundadora -->
+      <!-- Video en lugar de la foto -->
       <div class="feria-photo-wrapper reveal-right">
-        <img src="assets/img/feria.jpg" alt="Fundadora de Arte en Conserva en la feria de Berisso"
-          style="width:100%; border-radius:var(--radius-lg); box-shadow:var(--shadow-lg);">
-
+        <div style="border-radius:var(--radius-lg); overflow:hidden; box-shadow:var(--shadow-lg);">
+          <video
+            controls
+            playsinline
+            poster="assets/img/puesto_feria.jpg"
+            style="width:100%; max-height:75vh; display:block; background:#000; object-fit:contain;"
+            preload="metadata">
+            <source src="assets/video/nosotros.mp4" type="video/mp4">
+            Tu navegador no soporta video HTML5.
+          </video>
+        </div>
         <div style="background:var(--beige-dark); border-radius:var(--radius); padding:1.5rem; margin-top:1.5rem; text-align:center;">
           <p style="font-family:var(--font-script); font-size:1.3rem; color:var(--red); margin-bottom:0.5rem;">"Cada frasco es una historia"</p>
           <p style="font-size:0.85rem; color:var(--text-muted);">Arte en Conserva · Feria de Berisso</p>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- VIDEO -->
-  <section class="section section-alt">
-    <div class="container">
-      <span class="section-label" style="display:block; text-align:center;">En movimiento</span>
-      <h2 class="section-title centered reveal">Así trabajamos</h2>
-      <p class="section-lead centered reveal delay-1">Un vistazo a la feria, los frascos y la pasión detrás de cada producto.</p>
-
-      <div class="reveal" style="max-width:800px; margin:0 auto; border-radius:var(--radius-lg); overflow:hidden; box-shadow:var(--shadow-lg);">
-        <video
-          controls
-          playsinline
-          poster="assets/img/puesto_feria.jpg"
-          style="width:100%; display:block; background:#000;"
-          preload="metadata">
-          <source src="assets/video/nosotros.mp4" type="video/mp4">
-          Tu navegador no soporta video HTML5.
-        </video>
       </div>
     </div>
   </section>

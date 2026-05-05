@@ -12,18 +12,26 @@ function saveCart(cart) {
   renderCartDrawer();
 }
 
-function addToCart(productId, qty = 1) {
+function addToCart(productId, qty = 1, variant = null) {
   const product = getProductById(productId);
   if (!product) return;
+
+  // Auto-seleccionar primera variante si el producto tiene variantes
+  if (!variant && product.variants) variant = product.variants[0];
+
+  const cartId = variant ? `${productId}__${variant.label.replace(/\s/g, '')}` : productId;
+  const price  = variant ? variant.price : product.price;
+  const name   = variant ? `${product.name} (${variant.label})` : product.name;
+
   const cart = getCart();
-  const existing = cart.find(i => i.id === productId);
+  const existing = cart.find(i => i.id === cartId);
   if (existing) {
     existing.qty += qty;
   } else {
-    cart.push({ id: productId, name: product.name, price: product.price, icon: product.icon, qty });
+    cart.push({ id: cartId, productId, name, price, icon: product.icon, qty });
   }
   saveCart(cart);
-  showCartToast(product.name);
+  showCartToast(name);
   openCartDrawer();
 }
 
