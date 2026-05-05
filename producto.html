@@ -37,9 +37,9 @@
   </header>
 
   <!-- BREADCRUMB -->
-  <div style="background:var(--beige-dark); padding: 0.8rem 0; border-bottom:1px solid var(--beige-dark);">
+  <div style="background:var(--beige-dark); padding: 0.3rem 0; border-bottom:1px solid var(--beige-dark);">
     <div class="container">
-      <nav aria-label="Breadcrumb" style="font-size:0.85rem; color:var(--text-muted); display:flex; gap:0.5rem; align-items:center; flex-wrap:wrap;">
+      <nav aria-label="Breadcrumb" style="font-size:0.72rem; color:var(--text-muted); display:flex; gap:0.35rem; align-items:center; flex-wrap:wrap; opacity:0.75;">
         <a href="index.html" style="color:var(--text-muted);">Inicio</a>
         <span>›</span>
         <a href="productos.html" style="color:var(--text-muted);">Productos</a>
@@ -56,7 +56,7 @@
       <!-- IMAGE -->
       <div class="product-detail-img reveal-left" id="product-img-wrapper">
         <div class="product-img-placeholder" id="product-img-placeholder"
-          style="background:white; border:1px solid var(--beige-dark); box-shadow:var(--shadow);">
+          style="background:white; border:1px solid var(--beige-dark); box-shadow:var(--shadow); padding:1rem;">
           <span id="product-big-icon" style="font-size:8rem;">🫙</span>
         </div>
       </div>
@@ -65,39 +65,18 @@
       <div class="product-detail-info reveal-right">
         <div id="product-category-tag" class="product-detail-tag"></div>
         <h1 id="product-name" style="font-size:clamp(2rem,4vw,3rem); margin-bottom:0.5rem;">Cargando...</h1>
-        <p id="product-tagline" style="font-family:var(--font-script); font-size:1.4rem; color:var(--green); margin-bottom:1rem;"></p>
-        <p id="product-weight" style="font-size:0.85rem; color:var(--text-muted); margin-bottom:1.5rem;"></p>
-
-        <p id="product-description" style="font-size:1.05rem; line-height:1.85; margin-bottom:2rem;"></p>
-
-        <!-- Ingredients -->
-        <div id="product-ingredients-block" style="margin-bottom:1.5rem; padding:1.2rem; background:var(--beige-dark); border-radius:var(--radius);">
-          <h4 style="font-family:var(--font); font-size:0.8rem; text-transform:uppercase; letter-spacing:2px; color:var(--green-dark); margin-bottom:0.8rem;">Ingredientes</h4>
-          <p id="product-ingredients" style="font-size:0.9rem; color:var(--text-mid);"></p>
-        </div>
-
-        <!-- Season -->
-        <div id="product-season-block" style="display:flex; align-items:center; gap:10px; margin-bottom:2rem;">
-          <span style="font-size:1.2rem;">🍂</span>
-          <div>
-            <span style="font-size:0.75rem; text-transform:uppercase; letter-spacing:2px; color:var(--text-muted); display:block;">Temporada</span>
-            <span id="product-season" style="font-size:0.95rem; color:var(--text-mid); font-weight:500;"></span>
-          </div>
-        </div>
+        <p id="product-tagline" style="font-family:var(--font-script); font-size:1.2rem; color:var(--green); margin-bottom:0.4rem;"></p>
+        <p id="product-weight" style="font-size:0.85rem; color:var(--text-muted); margin-bottom:0.8rem;"></p>
 
         <!-- Selector de tamaño (conservas con variantes) -->
-        <div id="variant-selector" style="display:none; margin-bottom:1.2rem;">
+        <div id="variant-selector" style="display:none; margin-bottom:1rem;">
           <span style="font-size:0.8rem; text-transform:uppercase; letter-spacing:2px; color:var(--text-muted); display:block; margin-bottom:0.6rem;">Tamaño</span>
           <div id="variant-options" style="display:flex; gap:0.8rem; flex-wrap:wrap;"></div>
         </div>
 
         <!-- Price + Add to cart -->
         <div class="product-atc-block">
-          <div>
-            <span style="font-size:0.8rem; text-transform:uppercase; letter-spacing:2px; color:var(--text-muted);">Precio</span>
-            <p id="product-price" style="font-size:2rem; font-family:var(--font-heading); color:var(--red); font-weight:700; margin:4px 0;"></p>
-          </div>
-
+          <p id="product-price" style="font-size:1.8rem; font-family:var(--font-heading); color:var(--red); font-weight:700; margin:0 0 0.8rem;"></p>
           <div class="atc-controls">
             <div class="qty-selector">
               <button class="qty-btn-lg" id="qty-minus" onclick="changeQty(-1)">−</button>
@@ -111,10 +90,27 @@
         </div>
 
         <!-- Guarantees -->
-        <div class="product-guarantees">
+        <div class="product-guarantees" style="margin-bottom:1.5rem;">
           <div class="guarantee-item"><span>🌱</span> Sin aditivos</div>
           <div class="guarantee-item"><span>🏺</span> Artesanal</div>
           <div class="guarantee-item"><span>📍</span> Berisso</div>
+        </div>
+
+        <p id="product-description" style="font-size:1rem; line-height:1.85; margin-bottom:1.5rem; color:var(--text-mid);"></p>
+
+        <!-- Ingredients -->
+        <div id="product-ingredients-block" style="margin-bottom:1.2rem; padding:1rem 1.2rem; background:var(--beige-dark); border-radius:var(--radius);">
+          <h4 style="font-family:var(--font); font-size:0.8rem; text-transform:uppercase; letter-spacing:2px; color:var(--green-dark); margin-bottom:0.6rem;">Ingredientes</h4>
+          <p id="product-ingredients" style="font-size:0.9rem; color:var(--text-mid);"></p>
+        </div>
+
+        <!-- Season -->
+        <div id="product-season-block" style="display:flex; align-items:center; gap:10px;">
+          <span style="font-size:1.2rem;">🍂</span>
+          <div>
+            <span style="font-size:0.75rem; text-transform:uppercase; letter-spacing:2px; color:var(--text-muted); display:block;">Temporada</span>
+            <span id="product-season" style="font-size:0.95rem; color:var(--text-mid); font-weight:500;"></span>
+          </div>
         </div>
       </div>
     </div>
@@ -231,15 +227,14 @@
       // Try to show image
       const imgWrapper = document.getElementById('product-img-wrapper');
       if (product.image) {
-        const isProductPhoto = product.image.includes('producto_');
+        const isProductPhoto = true; // todas las fotos de producto usan fondo blanco
         const placeholder = document.getElementById('product-img-placeholder');
         const img = document.createElement('img');
         img.src = product.image;
         img.alt = product.name;
         if (isProductPhoto) {
-          // Fondo blanco, centrado, con padding
-          placeholder.style.cssText = 'background:white; border:1px solid var(--beige-dark); box-shadow:var(--shadow); border-radius:var(--radius-lg); padding:2rem; display:flex; align-items:center; justify-content:center; min-height:400px;';
-          img.style.cssText = 'max-width:100%; max-height:420px; object-fit:contain; display:block;';
+          placeholder.style.cssText = 'background:white; border:1px solid var(--beige-dark); box-shadow:var(--shadow); border-radius:var(--radius-lg); padding:0.5rem; display:flex; align-items:center; justify-content:center; overflow:hidden;';
+          img.style.cssText = 'width:100%; height:100%; object-fit:contain; display:block; max-height:520px;';
           placeholder.innerHTML = '';
           placeholder.appendChild(img);
         } else {
