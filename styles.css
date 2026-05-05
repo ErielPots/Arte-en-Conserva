@@ -37,6 +37,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -1477,6 +1478,10 @@ footer {
 }
 
 @media (max-width: 768px) {
+  /* Prevenir desborde horizontal */
+  .reveal-left { transform: none; }
+  .reveal-right { transform: none; }
+
   .nav-links {
     display: none;
     position: fixed;
@@ -1561,6 +1566,9 @@ footer {
 
   .hero {
     min-height: 100svh;
+  }
+  .hero-bg {
+    background-position: 60% center;
   }
 
   .hero-btns {
