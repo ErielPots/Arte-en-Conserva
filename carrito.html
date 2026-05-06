@@ -96,6 +96,59 @@
   <script src="js/products.js"></script>
   <script src="js/cart.js"></script>
   <script>
+    let selectedPayment = 'transferencia';
+    let selectedDelivery = 'retiro';
+
+    function setPayment(method) {
+      selectedPayment = method;
+      renderSummary();
+      document.querySelectorAll('.pay-opt').forEach(b => b.classList.remove('active'));
+      document.getElementById('pay-' + method).classList.add('active');
+      const dniNote = document.getElementById('dni-note');
+      if (dniNote) dniNote.style.display = method === 'dni' ? 'flex' : 'none';
+    }
+
+    function setDelivery(mode) {
+      selectedDelivery = mode;
+      document.querySelectorAll('.del-opt').forEach(b => b.classList.remove('active'));
+      document.getElementById('del-' + mode).classList.add('active');
+    }
+
+    function renderSummary() {
+      const subtotal = cartTotal();
+      const reintegro = Math.round(subtotal * 0.4);
+      const isDni = selectedPayment === 'dni';
+
+      const subtotalRow = document.getElementById('sum-subtotal');
+      const reintegroBlock = document.getElementById('sum-reintegro-block');
+      const totalRow = document.getElementById('sum-total');
+      const totalLabel = document.getElementById('sum-total-label');
+
+      if (subtotalRow) subtotalRow.textContent = formatPrice(subtotal);
+      if (totalRow) totalRow.textContent = formatPrice(subtotal);
+      if (totalLabel) totalLabel.textContent = isDni ? 'Total a abonar' : 'Total';
+
+      if (reintegroBlock) {
+        reintegroBlock.style.display = isDni ? 'block' : 'none';
+        reintegroBlock.innerHTML = isDni ? `
+          <div class="cart-summary-row" style="color:var(--green-dark);">
+            <span>Reintegro (40%)</span>
+            <span style="font-weight:600;">− ${formatPrice(reintegro)}</span>
+          </div>
+          <div class="cart-summary-row">
+            <span>Precio después del reintegro</span>
+            <span>${formatPrice(subtotal - reintegro)}</span>
+          </div>` : '';
+      }
+    }
+
+    function buildWhatsAppMsg(cart) {
+      const payLabel = selectedPayment === 'dni' ? 'Cuenta DNI (40% reintegro)' : 'Transferencia';
+      const delLabel = selectedDelivery === 'retiro' ? 'Retiro en local' : 'Envío a domicilio';
+      const items = cart.map(i => `${i.qty}x ${i.name}`).join(', ');
+      return `Hola! Quiero hacer un pedido de Arte en Conserva:\n${items}\nPago: ${payLabel}\nEntrega: ${delLabel}\nTotal: ${formatPrice(cartTotal())}`;
+    }
+
     function renderCartPage() {
       const cart = getCart();
       const container = document.getElementById('cart-page-content');
@@ -114,7 +167,7 @@
       const itemsHtml = cart.map(item => {
         const product = getProductById(item.id);
         return `
-          <div class="cart-page-item reveal">
+          <div class="cart-page-item">
             <div class="cart-page-item-icon">${item.image ? `<img src="${item.image}" alt="${item.name}" style="width:100%;height:100%;object-fit:contain;border-radius:6px;">` : item.icon}</div>
             <div class="cart-page-item-info">
               <a href="producto.html?id=${item.id}" class="cart-page-item-name">${item.name}</a>
@@ -131,7 +184,6 @@
       }).join('');
 
       const subtotal = cartTotal();
-      const envio = 0; // free shipping or TBD
 
       container.innerHTML = `
         <div class="cart-page-items-col">
@@ -140,39 +192,63 @@
             <button onclick="clearCart(); renderCartPage();" class="cart-clear-btn">Vaciar carrito</button>
           </div>
           <div class="cart-page-items-list">${itemsHtml}</div>
-          <a href="productos.html" style="display:inline-flex; align-items:center; gap:8px; color:var(--text-muted); font-size:0.9rem; margin-top:1.5rem;">
+
+          <!-- MÉTODO DE PAGO -->
+          <div style="margin-top:2rem;">
+            <h4 style="font-size:0.8rem; text-transform:uppercase; letter-spacing:2px; color:var(--text-muted); margin-bottom:0.8rem;">Método de pago</h4>
+            <div style="display:flex; gap:0.75rem; flex-wrap:wrap;">
+              <button id="pay-transferencia" class="pay-opt active" onclick="setPayment('transferencia')">
+                💳 Transferencia
+              </button>
+              <button id="pay-dni" class="pay-opt" onclick="setPayment('dni')">
+                <img src="assets/img/logo_banco_provincia.png" alt="" style="height:14px;vertical-align:middle;margin-right:4px;">Cuenta DNI
+              </button>
+            </div>
+            <div id="dni-note" style="display:none; margin-top:0.75rem; align-items:center; gap:0.5rem; padding:0.6rem 0.9rem; background:#eef7ee; border-left:3px solid var(--green-dark); border-radius:var(--radius); font-size:0.82rem; color:var(--green-dark);">
+              <span>🎉</span>
+              <span><strong>40% de reintegro</strong> acreditado por Banco Provincia en tu cuenta DNI.</span>
+            </div>
+          </div>
+
+          <!-- ENTREGA -->
+
+          <a href="productos.html" style="display:inline-flex; align-items:center; gap:8px; color:var(--text-muted); font-size:0.9rem; margin-top:1.8rem;">
             ← Seguir comprando
           </a>
         </div>
 
         <div class="cart-summary-col">
-          <div class="cart-summary-box reveal">
-            <h3 style="margin-bottom:1.5rem; font-size:1.4rem;">Resumen del pedido</h3>
+          <div class="cart-summary-box">
+            <h3 style="margin-bottom:1.5rem; font-size:1.4rem; color:var(--green-dark);">Resumen del pedido</h3>
 
             <div class="cart-summary-row">
               <span>Subtotal</span>
-              <span>${formatPrice(subtotal)}</span>
+              <span id="sum-subtotal">${formatPrice(subtotal)}</span>
             </div>
             <div class="cart-summary-row">
               <span>Envío</span>
               <span style="color:var(--green); font-weight:600;">A coordinar</span>
             </div>
+
+            <div id="sum-reintegro-block" style="display:none;"></div>
+
             <div class="cart-summary-row cart-summary-total">
-              <span>Total</span>
-              <strong>${formatPrice(subtotal)}</strong>
+              <span id="sum-total-label">Total</span>
+              <strong id="sum-total">${formatPrice(subtotal)}</strong>
             </div>
 
-            <div style="margin:1.5rem 0; padding:1rem; background:var(--beige-dark); border-radius:var(--radius); font-size:0.85rem; color:var(--text-muted);">
-              <p>📍 <strong>Retiro en feria:</strong> Feria de Berisso</p>
-              <p style="margin-top:0.5rem;">💬 <strong>Pedidos por WhatsApp:</strong> Para coordinar envíos y pagos.</p>
+            <p style="font-size:0.75rem; color:var(--text-muted); margin:0.3rem 0 0.8rem; line-height:1.5;">
+              Abonás el total. El reintegro lo acredita el banco en tu cuenta.
+            </p>
+
+            <div style="margin:0 0 1.2rem; padding:0.8rem 1rem; background:var(--beige-dark); border-radius:var(--radius); font-size:0.82rem; color:var(--text-muted);">
+              <p>📍 <strong>Entrega:</strong> Retiro en el local o envío a domicilio</p>
             </div>
 
-            <a href="https://wa.me/?text=Hola!%20Quiero%20hacer%20un%20pedido%20de%20Arte%20en%20Conserva:%20${encodeURIComponent(cart.map(i => `${i.qty}x ${i.name}`).join(', '))}"
-               target="_blank" rel="noopener"
-               class="btn btn-primary" style="width:100%; justify-content:center; margin-bottom:0.8rem;">
-              💬 Finalizar por WhatsApp
-            </a>
-            <p style="font-size:0.78rem; color:var(--text-muted); text-align:center;">Se abrirá WhatsApp con tu pedido listo</p>
+            <button id="whatsapp-btn"
+               class="btn btn-primary" style="width:100%; justify-content:center; margin-bottom:0.8rem; border:none; cursor:pointer; background:var(--green-dark);">
+              Realizar pedido
+            </button>
 
             <div class="cart-guarantees">
               <div>🌱 Sin aditivos</div>
@@ -181,6 +257,15 @@
             </div>
           </div>
         </div>`;
+
+      // button does nothing on click
+      document.getElementById('whatsapp-btn').addEventListener('click', function(e) {
+        e.preventDefault();
+      });
+
+      // restore selections
+      setPayment(selectedPayment);
+      setDelivery(selectedDelivery);
 
       document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     }

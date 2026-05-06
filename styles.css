@@ -1866,6 +1866,32 @@ footer {
   background: rgba(184, 40, 30, 0.06);
 }
 
+.pay-opt, .del-opt {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 1rem;
+  border: 2px solid var(--beige-dark);
+  border-radius: 30px;
+  background: #fff;
+  font-size: 0.85rem;
+  color: var(--text-mid);
+  cursor: pointer;
+  transition: var(--transition);
+  font-family: var(--font);
+}
+
+.pay-opt:hover, .del-opt:hover {
+  border-color: var(--green-dark);
+  color: var(--green-dark);
+}
+
+.pay-opt.active, .del-opt.active {
+  border-color: var(--green-dark);
+  background: var(--green-dark);
+  color: #fff;
+}
+
 /* ===== CART TOAST ===== */
 #cart-toast {
   position: fixed;
@@ -2261,7 +2287,7 @@ footer {
 }
 
 .cart-page-item-name:hover {
-  color: var(--red);
+  color: var(--green-dark);
 }
 
 .cart-page-item-sub {
@@ -2279,7 +2305,7 @@ footer {
 
 .cart-page-item-price {
   font-weight: 700;
-  color: var(--red);
+  color: var(--green-dark);
   font-size: 1.1rem;
   white-space: nowrap;
 }
@@ -2329,7 +2355,7 @@ footer {
 }
 
 .cart-summary-total strong {
-  color: var(--red);
+  color: var(--green-dark);
   font-size: 1.4rem;
 }
 
