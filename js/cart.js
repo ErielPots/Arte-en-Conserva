@@ -28,7 +28,7 @@ function addToCart(productId, qty = 1, variant = null) {
   if (existing) {
     existing.qty += qty;
   } else {
-    cart.push({ id: cartId, productId, name, price, icon: product.icon, image: product.image || null, qty });
+    cart.push({ id: cartId, productId, name, price, oldPrice: product.oldPrice || null, icon: product.icon, image: product.image || null, qty });
   }
   saveCart(cart);
   showCartToast(name);

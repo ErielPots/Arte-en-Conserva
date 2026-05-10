@@ -7,6 +7,7 @@ const PRODUCTS = [
     icon: '🍅',
     image: 'assets/img/producto_tomate_actualizado.png',
     price: 5000,
+    oldPrice: 6000,
     weight: '360 cc',
     badge: '🍅 En temporada',
     tagline: 'Dulce y salada a la vez. Perfecta con quesos.',
@@ -290,6 +291,25 @@ const PRODUCTS = [
     ingredients: ['Orégano', 'Perejil fresco', 'Ajo', 'Ají molido', 'Aceite de oliva', 'Vinagre', 'Sal'],
     uses: ['Asado y parrilla', 'Sobre carnes grilladas', 'Para marinar pollo', 'En sándwiches de bondiola'],
     season: 'Todo el año',
+  },
+
+  // ── COMBOS ──────────────────────────────────────────────────
+  {
+    id: 'combo-mermelada-conserva',
+    name: 'Combo Mermelada + Conserva',
+    category: 'combo',
+    icon: '🫙',
+    image: 'assets/img/combo.jpg',
+    price: 6960,
+    oldPrice: 10500,
+    weight: '2 × 360 cc',
+    badge: '🎁 Combo',
+    tagline: 'Tu mermelada y tu conserva favorita, juntas.',
+    description: 'Elegí una mermelada y una conserva de nuestro catálogo completo. Dos frascos de 360 cc a precio especial. El regalo perfecto o el combo ideal para tu alacena artesanal.',
+    ingredients: [],
+    uses: ['Regalo artesanal', 'Degustación', 'Para la alacena', 'Ideal para regalar'],
+    season: 'Todo el año',
+    isCombo: true,
   },
 ];
 
