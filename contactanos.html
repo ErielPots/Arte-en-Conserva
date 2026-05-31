@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contacto — Arte en Conserva</title>
+  <title>Contactanos — Arte en Conserva</title>
   <link rel="stylesheet" href="styles.css">
   <style>
     .contact-grid {
@@ -109,21 +109,12 @@
       color: var(--text-muted);
       line-height: 1.5;
     }
-
-    .partner-types {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-top: 1.5rem;
+    .contact-info-card p a {
+      color: var(--green);
+      text-decoration: none;
+      font-weight: 600;
     }
-    .partner-type-tag {
-      background: var(--beige-dark);
-      border-radius: 30px;
-      padding: 0.4rem 0.9rem;
-      font-size: 0.82rem;
-      color: var(--text-mid);
-      font-family: var(--font);
-    }
+    .contact-info-card p a:hover { text-decoration: underline; }
 
     .form-success {
       display: none;
@@ -160,8 +151,8 @@
         <li><a href="productos.html">Productos</a></li>
         <li><a href="nosotros.html">Nosotros</a></li>
         <li><a href="recetas.html">Recetas</a></li>
-        <li><a href="contactanos.html">Contactanos</a></li>
-        <li><a href="contacto.html" class="active">Trabaja con nosotros</a></li>
+        <li><a href="contactanos.html" class="active">Contactanos</a></li>
+        <li><a href="contacto.html">Trabaja con nosotros</a></li>
         <li>
           <button class="cart-nav-btn" onclick="openCartDrawer()" aria-label="Carrito">
             🛒 <span class="cart-badge" style="display:none;">0</span>
@@ -175,9 +166,9 @@
   </header>
 
   <section class="section container" style="padding-top:2rem;">
-    <span class="section-label" style="display:block; text-align:center;">Alianzas y asociaciones</span>
-    <h2 class="section-title centered reveal">Trabajemos juntos</h2>
-    <p class="section-lead centered reveal delay-1">Si tenés un hotel, cafetería, restaurante o emprendimiento gastronómico y querés incorporar nuestros productos, escribinos — nos encanta colaborar con proyectos con alma.</p>
+    <span class="section-label" style="display:block; text-align:center;">Atención al cliente</span>
+    <h2 class="section-title centered reveal">¿Necesitás ayuda?</h2>
+    <p class="section-lead centered reveal delay-1">¿Tuviste un problema con tu envío, con un producto o querés consultarnos por un pedido? Escribinos por WhatsApp y te respondemos a la brevedad.</p>
 
     <div class="contact-grid">
 
@@ -191,43 +182,35 @@
                 <input type="text" id="f-nombre" placeholder="Tu nombre">
               </div>
               <div class="form-group">
-                <label for="f-negocio">Nombre del negocio</label>
-                <input type="text" id="f-negocio" placeholder="Café del Sur">
+                <label for="f-email">Tu email</label>
+                <input type="email" id="f-email" placeholder="hola@ejemplo.com">
               </div>
-            </div>
-
-            <div class="form-group">
-              <label for="f-tipo">Tipo de emprendimiento</label>
-              <select id="f-tipo">
-                <option value="">Seleccioná una opción</option>
-                <option value="Cafetería">Cafetería</option>
-                <option value="Restaurante">Restaurante</option>
-                <option value="Hotel / Bed & Breakfast">Hotel / Bed &amp; Breakfast</option>
-                <option value="Dietética / Tienda natural">Dietética / Tienda natural</option>
-                <option value="Catering">Catering</option>
-                <option value="Reventa">Reventa</option>
-                <option value="Otro">Otro</option>
-              </select>
             </div>
 
             <div class="form-row">
               <div class="form-group">
-                <label for="f-contacto">Email o teléfono</label>
-                <input type="text" id="f-contacto" placeholder="hola@ejemplo.com">
+                <label for="f-motivo">Motivo de la consulta</label>
+                <select id="f-motivo">
+                  <option value="">Seleccioná una opción</option>
+                  <option value="Problema con el envío">Problema con el envío</option>
+                  <option value="Problema con el producto">Problema con el producto</option>
+                  <option value="Consulta sobre un pedido">Consulta sobre un pedido</option>
+                  <option value="Otra consulta">Otra consulta</option>
+                </select>
               </div>
               <div class="form-group">
-                <label for="f-ciudad">Ciudad</label>
-                <input type="text" id="f-ciudad" placeholder="Berisso">
+                <label for="f-pedido">N.º de pedido (opcional)</label>
+                <input type="text" id="f-pedido" placeholder="Ej. #1234">
               </div>
             </div>
 
             <div class="form-group">
-              <label for="f-mensaje">Mensaje</label>
-              <textarea id="f-mensaje" placeholder="Contanos qué tenés en mente — cantidad aproximada, productos de interés, cómo querés trabajar juntos..."></textarea>
+              <label for="f-mensaje">Contanos qué pasó</label>
+              <textarea id="f-mensaje" placeholder="Describí tu problema o consulta con el mayor detalle posible para que podamos ayudarte mejor..."></textarea>
             </div>
 
-            <button class="btn btn-primary" style="width:100%; justify-content:center; margin-top:0.5rem;" onclick="enviarContacto()">
-              💬 Enviar por WhatsApp
+            <button class="btn btn-primary" style="width:100%; justify-content:center; margin-top:0.5rem;" onclick="enviarConsulta()">
+              💬 Enviar consulta por WhatsApp
             </button>
             <p style="font-size:0.78rem; color:var(--text-muted); text-align:center; margin-top:0.6rem;">Se abrirá WhatsApp con tu mensaje listo para enviarnos</p>
           </div>
@@ -235,8 +218,8 @@
           <div class="form-success" id="form-success">
             <div class="success-icon">🌿</div>
             <h3>¡Gracias por escribirnos!</h3>
-            <p>Tu mensaje se envió por WhatsApp. Te respondemos a la brevedad.</p>
-            <button class="btn btn-ghost" style="margin-top:1.5rem;" onclick="resetForm()">Enviar otro mensaje</button>
+            <p>Tu mensaje se envió por WhatsApp. Te respondemos lo antes posible.</p>
+            <button class="btn btn-ghost" style="margin-top:1.5rem;" onclick="resetForm()">Enviar otra consulta</button>
           </div>
         </div>
       </div>
@@ -245,30 +228,26 @@
       <div class="contact-info-block reveal-right">
 
         <div class="contact-info-card">
-          <span class="ci-icon">🤝</span>
+          <span class="ci-icon">💬</span>
           <div>
-            <h4>¿Por qué asociarse?</h4>
-            <p>Ofrecemos productos artesanales de origen conocido, elaborados en pequeños lotes. Perfectos para desayunos, tablas, maridajes y menús especiales que quieran destacar lo local.</p>
+            <h4>Escribinos por WhatsApp</h4>
+            <p>Para cualquier problema o consulta, escribinos por <a href="https://wa.me/5491112345678" target="_blank" rel="noopener">WhatsApp</a> y te respondemos a la brevedad.</p>
+          </div>
+        </div>
+
+        <div class="contact-info-card">
+          <span class="ci-icon">⏱️</span>
+          <div>
+            <h4>Tiempo de respuesta</h4>
+            <p>Respondemos de lunes a viernes, normalmente dentro de las 24 a 48 horas hábiles.</p>
           </div>
         </div>
 
         <div class="contact-info-card">
           <span class="ci-icon">📦</span>
           <div>
-            <h4>Pedidos mayoristas</h4>
-            <p>Podemos coordinar entregas regulares según tu demanda. Los precios y formatos se acuerdan según el volumen y la frecuencia del pedido.</p>
-          </div>
-        </div>
-
-        <div>
-          <p style="font-size:0.82rem; text-transform:uppercase; letter-spacing:1.5px; color:var(--text-muted); font-weight:600; margin-bottom:0.8rem;">Trabajamos con</p>
-          <div class="partner-types">
-            <span class="partner-type-tag">☕ Cafeterías</span>
-            <span class="partner-type-tag">🏨 Hoteles</span>
-            <span class="partner-type-tag">🍽️ Restaurantes</span>
-            <span class="partner-type-tag">🌿 Dietéticas</span>
-            <span class="partner-type-tag">🎪 Catering</span>
-            <span class="partner-type-tag">🛒 Revendedores</span>
+            <h4>Tené a mano tu pedido</h4>
+            <p>Si tu consulta es sobre un envío o producto, incluí el número de pedido para ayudarte más rápido.</p>
           </div>
         </div>
 
@@ -322,33 +301,33 @@
   <script src="js/products.js"></script>
   <script src="js/cart.js"></script>
   <script>
-    function enviarContacto() {
+    const WHATSAPP_NUMBER = '5491112345678';
+
+    function enviarConsulta() {
       const nombre  = document.getElementById('f-nombre').value.trim();
-      const negocio = document.getElementById('f-negocio').value.trim();
-      const tipo    = document.getElementById('f-tipo').value;
-      const contacto = document.getElementById('f-contacto').value.trim();
-      const ciudad  = document.getElementById('f-ciudad').value.trim();
+      const email   = document.getElementById('f-email').value.trim();
+      const motivo  = document.getElementById('f-motivo').value;
+      const pedido  = document.getElementById('f-pedido').value.trim();
       const mensaje = document.getElementById('f-mensaje').value.trim();
 
-      if (!nombre || !negocio || !tipo || !contacto || !mensaje) {
-        alert('Por favor completá los campos obligatorios: nombre, negocio, tipo, contacto y mensaje.');
+      if (!nombre || !motivo || !mensaje) {
+        alert('Por favor completá los campos obligatorios: nombre, motivo y mensaje.');
         return;
       }
 
       const lines = [
-        '¡Hola! Me contacto desde *Arte en Conserva* para consultar sobre una asociación.',
+        '¡Hola! Me contacto desde *Arte en Conserva* por una consulta de atención al cliente.',
         '',
         `👤 *Nombre:* ${nombre}`,
-        `🏪 *Negocio:* ${negocio}`,
-        `🏷️ *Tipo:* ${tipo}`,
-        ciudad ? `📍 *Ciudad:* ${ciudad}` : '',
-        `📬 *Contacto:* ${contacto}`,
+        email ? `📬 *Email:* ${email}` : '',
+        `🏷️ *Motivo:* ${motivo}`,
+        pedido ? `📦 *N.º de pedido:* ${pedido}` : '',
         '',
         `💬 *Mensaje:* ${mensaje}`,
-      ].filter(l => l !== null && l !== undefined && !(l === '' && lines === undefined));
+      ].filter(l => l !== '');
 
       const text = lines.join('\n');
-      window.open('https://wa.me/?text=' + encodeURIComponent(text), '_blank', 'noopener');
+      window.open('https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(text), '_blank', 'noopener');
 
       document.getElementById('form-fields').style.display = 'none';
       document.getElementById('form-success').style.display = 'block';
@@ -356,10 +335,9 @@
 
     function resetForm() {
       document.getElementById('f-nombre').value = '';
-      document.getElementById('f-negocio').value = '';
-      document.getElementById('f-tipo').value = '';
-      document.getElementById('f-contacto').value = '';
-      document.getElementById('f-ciudad').value = '';
+      document.getElementById('f-email').value = '';
+      document.getElementById('f-motivo').value = '';
+      document.getElementById('f-pedido').value = '';
       document.getElementById('f-mensaje').value = '';
       document.getElementById('form-fields').style.display = 'block';
       document.getElementById('form-success').style.display = 'none';
